@@ -1,0 +1,16 @@
+Test Case ID,Test Case Description,Test Steps,Expected Result,Actual Result,Status,Severity Level,Assigned To,Remarks
+TC-001,Validate overall responsiveness,"Test the entire website on different screen sizes (mobile, tablet, desktop)",All pages should display correctly with proper layout and functionality on all devices,All pages responsive with layout intact,Passed,Low,--,Verified responsiveness across all screen sizes
+TC-002,Test API error handling,Disconnect API > Refresh page,Show fallback UI with error message,Error message shown,Passed,Medium,--,Handled gracefully
+TC-003,Validate product listing,Visit /products page,Products are listed correctly,Products displayed as expected,Passed,Low,--,All products loaded successfully
+TC-004,Search functionality,Type 'Table' in search bar,Products with 'Table' appear,Correct results displayed,Passed,Medium,--,Verified search functionality
+TC-005,Validate product detail page,Click on a product image on /products page,Product detail page opens with correct info,Correct details displayed,Passed,Low,--,Product Details Loaded Successfully
+TC-006,Add to Cart functionality,Click 'Add to Cart' on a product detail page,Product is added to cart with correct quantity,Cart updated successfully,Passed,Low,--,Add to Cart functionality working as expected
+TC-007,Handle missing product data,Simulate API failure or no data response,Display fallback UI with error message,No products available' displayed,Passed,Medium,--,Fallback UI working
+TC-008,Validate category filter,Select a category from the dropdown on /products page,Only products belonging to the selected category are displayed,Correct filtered results displayed,Passed,Low,--,Category filter working as expected
+TC-009,Cross-browser compatibility ,"Test /products and /productDetail page on Chrome, Firefox, Edge, and Safari",/products and /productDetail pages display correctly on all browsers,All browsers render correctly,Passed,Low,--,Verified responsiveness and consistency across all major browsers
+TC-010,Validate pagiantion,"Click on pagination buttons (Next, Previous) on /products page",Correct products for the selected page are displayed,Pagination works correctly,Passed,Low,--,Pagination working as expected on the /products page
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
