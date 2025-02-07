@@ -9,9 +9,5 @@ export default async function ProductPage({ params }: { params: { slug: string }
     return <div>Product not found</div>;
   }
 
-  return (
-    <div className="container mx-auto py-8">
-      <ProductDetails product={product} />
-    </div>
-  );
+  return <ProductDetails product={product} />;
 }
