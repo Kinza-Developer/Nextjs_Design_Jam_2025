@@ -8,8 +8,35 @@ import SearchBar from '../components/SearchBar';
 import CategoryFilter from '../components/CategoryFilter';
 import Pagination from '../components/Pagination';
 
+// Define Product Type
+interface Product {
+  _id: string;
+  name: string;
+  price: number;
+  image: {
+    asset: {
+      _ref: string;
+    };
+  } | null;
+  slug: {
+    current: string;
+  };
+  quantity: number;
+  tags: string[];
+  description: string;
+  features: string[];
+  dimensions: {
+    height: string;
+    width: string;
+    depth: string;
+  };
+  category?: {
+    name: string;
+  };
+}
+
 export default function ProductsPage() {
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -20,11 +47,11 @@ export default function ProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       const query = `*[_type == "product"]{ name, price, image, slug, category->{name} }`;
-      const data = await client.fetch(query);
+      const data: Product[] = await client.fetch(query);
       setProducts(data);
       
       // Extract unique categories
-      const uniqueCategories: string[] = [...new Set(data.map((product: any) => (product.category?.name || 'Uncategorized') as string))] as string[];
+      const uniqueCategories: string[] = [...new Set(data.map((product) => product.category?.name || 'Uncategorized'))];
       setCategories(uniqueCategories);
     };
 
@@ -32,7 +59,7 @@ export default function ProductsPage() {
   }, []);
 
   // Filter products based on search & category
-  const filteredProducts = products.filter((product: any) =>
+  const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
     (selectedCategory ? product.category?.name === selectedCategory : true)
   );
